@@ -1371,7 +1371,7 @@
       if (track) track.scrollBy({ left: amount, behavior: 'smooth' });
     }
 
-    var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzTyF46errGyV0v2M_qWO6jTw6-6G44dHWkoWPVNGNo0ftOyun57ctnFpijqj1QdWse/exec';
+    var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxD8-ryy2CFWF6P9K9E9f0Npjr2KD1n58WitQunEH0zxfAUi3qYEqaZ5zSpngFHWoZS/exec';
 
     document.querySelectorAll('.hero-subscribe form, .subscribe-form').forEach(function(form) {
       form.addEventListener('submit', function(e) {
@@ -1382,10 +1382,8 @@
         if (!email) return;
         btn.disabled = true;
         btn.textContent = '...';
-        fetch(SHEET_URL, {
-          method: 'POST',
+        fetch(SHEET_URL + '?email=' + encodeURIComponent(email), {
           mode: 'no-cors',
-          body: JSON.stringify({email: email}),
         })
         .then(function() {
           input.value = '';
