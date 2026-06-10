@@ -499,7 +499,7 @@
     .carousel-section {
       padding: 90px 0;
       position: relative;
-      background: var(--beige);
+      background: var(--white);
     }
 
     .carousel-section.bg-alt {
@@ -608,8 +608,9 @@
       min-width: 260px;
       max-width: 260px;
       scroll-snap-align: start;
-      border-radius: 16px;
-      background: var(--yellow);
+      border-radius: 0;
+      background: var(--black);
+      color: var(--white);
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
       flex-shrink: 0;
@@ -628,7 +629,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border-radius: 16px 16px 0 0;
+      border-radius: 0;
     }
 
     .ep-card-thumb img {
@@ -685,12 +686,10 @@
 
     .ep-card-info {
       padding: 0.9rem 1.1rem 1.1rem;
-      background: var(--yellow);
       min-height: 90px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-radius: 0 0 16px 16px;
     }
 
     .ep-card-info h4 {
@@ -1202,8 +1201,8 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="#youtube" data-i18n="nav_audiovisual">Audiovisual</a></li>
         <li><a href="#cuentos" data-i18n="nav_podcast">El Podcast</a></li>
+        <li><a href="#youtube" data-i18n="nav_audiovisual">Audiovisual</a></li>
         <li><a href="#misterios" data-i18n="nav_misterios">Misterios</a></li>
         <li><a href="#sobre" data-i18n="nav_feroces">Feroces</a></li>
         <li><a href="#suscribite" class="nav-cta" data-i18n="nav_subscribe">Suscribite</a></li>
@@ -1228,32 +1227,6 @@
       <p class="hero-subscribe-note" data-i18n="hero_note">Se parte de la comunidad! Esto es para recibir un newsletter sobre nuestras novedades. Episodios nuevos y contenido exclusivo. Sin spam.</p>
     </div>
 
-  </section>
-
-  <!-- ==================== YOUTUBE HERO BANNER ==================== -->
-  <section class="youtube-section" id="youtube">
-    <div class="youtube-bg">
-      <img src="../assets/hero-youtube1.jpeg" alt="Cuentos Feroces canal de YouTube - Audiocuentos animados para chicos">
-    </div>
-    <div class="youtube-content">
-      <div class="youtube-text">
-<div class="youtube-badge">
-          <svg viewBox="0 0 24 17" fill="none">
-            <path d="M23.498 2.186A3.016 3.016 0 0 0 21.376.05C19.505 0 12 0 12 0S4.495 0 2.623.05A3.017 3.017 0 0 0 .502 2.186C0 4.07 0 8.5 0 8.5s0 4.43.502 6.314a3.016 3.016 0 0 0 2.122 2.136C4.495 17 12 17 12 17s7.505 0 9.377-.05a3.015 3.015 0 0 0 2.122-2.136C24 12.93 24 8.5 24 8.5s0-4.43-.502-6.314z" fill="#FF0000"/>
-            <path d="M9.545 12.068V4.932L15.818 8.5l-6.273 3.568z" fill="#FFF"/>
-          </svg>
-          <span data-i18n="yt_badge">Nuevo en YouTube</span>
-        </div>
-        <h2 data-i18n="yt_title" data-i18n-html="true">
-          Ya nos escuchaste.<br>
-          Ahora <span class="highlight">miranos!</span>
-        </h2>
-        <p class="yt-subtitle" data-i18n="yt_subtitle">Cuentos Feroces animados</p>
-        <a href="https://www.youtube.com/@cuentosferoces" target="_blank" class="youtube-play-btn" data-i18n="yt_btn">
-          Pr&oacute;ximamente
-        </a>
-      </div>
-    </div>
   </section>
 
   <!-- ==================== CUENTOS FEROCES — CAROUSEL ==================== -->
@@ -1303,6 +1276,32 @@
         <div class="ep-card" onclick="window.open('https://open.spotify.com/episode/4oxKNm3hz3rkPTrL74b4iS','_blank')"><div class="ep-card-thumb"><img src="../assets/thumb_chicasirena.jpg" alt="Cuento  - Podcast Cuentos Feroces" loading="lazy"><div class="ep-play"><div class="play-tri"></div></div></div><div class="ep-card-info"><p class="ep-number">Ep. 3</p><h4>Chica Sirena</h4><span class="ep-meta">16 min</span></div></div>
         <div class="ep-card" onclick="window.open('https://open.spotify.com/episode/68uvuN1cNS7STLCJYnM9lz','_blank')"><div class="ep-card-thumb"><img src="../assets/thumb_cenigenia.jpeg" alt="Cuento Cenigenia - Podcast Cuentos Feroces" loading="lazy"><div class="ep-play"><div class="play-tri"></div></div></div><div class="ep-card-info"><p class="ep-number">Ep. 2</p><h4>Cenigenia</h4><span class="ep-meta">15 min</span></div></div>
         <div class="ep-card" onclick="window.open('https://open.spotify.com/episode/6UBXv4UF2jtqHv157tuq78','_blank')"><div class="ep-card-thumb"><img src="../assets/thumb_caperuzota.jpeg" alt="Cuento Caperuzota Azul - Podcast Cuentos Feroces" loading="lazy"><div class="ep-play"><div class="play-tri"></div></div></div><div class="ep-card-info"><p class="ep-number">Ep. 1</p><h4>Caperuzota Azul</h4><span class="ep-meta">12 min</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== YOUTUBE HERO BANNER ==================== -->
+  <section class="youtube-section" id="youtube">
+    <div class="youtube-bg">
+      <img src="../assets/hero-youtube1.jpeg" alt="Cuentos Feroces canal de YouTube - Audiocuentos animados para chicos">
+    </div>
+    <div class="youtube-content">
+      <div class="youtube-text">
+<div class="youtube-badge">
+          <svg viewBox="0 0 24 17" fill="none">
+            <path d="M23.498 2.186A3.016 3.016 0 0 0 21.376.05C19.505 0 12 0 12 0S4.495 0 2.623.05A3.017 3.017 0 0 0 .502 2.186C0 4.07 0 8.5 0 8.5s0 4.43.502 6.314a3.016 3.016 0 0 0 2.122 2.136C4.495 17 12 17 12 17s7.505 0 9.377-.05a3.015 3.015 0 0 0 2.122-2.136C24 12.93 24 8.5 24 8.5s0-4.43-.502-6.314z" fill="#FF0000"/>
+            <path d="M9.545 12.068V4.932L15.818 8.5l-6.273 3.568z" fill="#FFF"/>
+          </svg>
+          <span data-i18n="yt_badge">Nuevo en YouTube</span>
+        </div>
+        <h2 data-i18n="yt_title" data-i18n-html="true">
+          Ya nos escuchaste.<br>
+          Ahora <span class="highlight">miranos!</span>
+        </h2>
+        <p class="yt-subtitle" data-i18n="yt_subtitle">Cuentos Feroces animados</p>
+        <a href="https://www.youtube.com/@cuentosferoces" target="_blank" class="youtube-play-btn" data-i18n="yt_btn">
+          Pr&oacute;ximamente
+        </a>
       </div>
     </div>
   </section>
@@ -1371,7 +1370,7 @@
       if (track) track.scrollBy({ left: amount, behavior: 'smooth' });
     }
 
-    var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxD8-ryy2CFWF6P9K9E9f0Npjr2KD1n58WitQunEH0zxfAUi3qYEqaZ5zSpngFHWoZS/exec';
+    var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxlZfK_xEBOkyoEMAnEMdG6KSMpB-Wex1vvYCUlCWaYRf3s3_kAhCPtN1Gamuind5-T/exec';
 
     document.querySelectorAll('.hero-subscribe form, .subscribe-form').forEach(function(form) {
       form.addEventListener('submit', function(e) {
