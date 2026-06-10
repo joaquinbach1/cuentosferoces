@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /wireframe.html
+
+Sitemap: https://www.cuentosferoces.com/sitemap.xml
