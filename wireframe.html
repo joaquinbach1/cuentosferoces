@@ -269,13 +269,15 @@
     }
 
     .hero-subscribe button.loading,
-    .subscribe-form button.loading {
+    .subscribe-form button.loading,
+    .modal-form button.loading {
       pointer-events: none;
       animation: btnPulse 1.2s ease-in-out infinite;
     }
 
     .hero-subscribe button.loading::after,
-    .subscribe-form button.loading::after {
+    .subscribe-form button.loading::after,
+    .modal-form button.loading::after {
       content: '';
       animation: dots 1.4s steps(4, end) infinite;
     }
@@ -1154,6 +1156,118 @@
       transform: scale(1.05);
     }
 
+    /* ========== MODAL CONTARNOS MÁS ========== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      padding: 1.5rem;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: var(--yellow);
+      color: var(--black);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      box-sizing: border-box;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--black);
+      line-height: 1;
+      padding: 4px 8px;
+    }
+
+    .modal-box h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-box p {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .modal-form input {
+      padding: 13px 16px;
+      border: 2px solid rgba(0,0,0,0.15);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.5);
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .modal-form input:focus {
+      border-color: var(--black);
+    }
+
+    .modal-form input::placeholder {
+      color: rgba(0,0,0,0.35);
+    }
+
+    .modal-form button {
+      padding: 14px;
+      background: var(--black);
+      color: var(--yellow);
+      border: none;
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .modal-form button:hover {
+      transform: scale(1.03);
+    }
+
     /* ========== FOOTER ========== */
     footer {
       background: var(--black);
@@ -1554,6 +1668,22 @@
     </div>
   </section>
 
+  <!-- ==================== MODAL CONTARNOS MÁS ==================== -->
+  <div class="modal-overlay" id="modalContarnos">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3>Contanos sobre vos</h3>
+      <p>Nos encanta conocer a nuestra comunidad.</p>
+      <form class="modal-form" id="modalForm">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="apellido" placeholder="Apellido" required>
+        <input type="number" name="edad" placeholder="Edad" min="1" max="120">
+        <input type="tel" name="wsp" placeholder="WhatsApp (ej: 1155667788)">
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
   <!-- ==================== FOOTER ==================== -->
   <footer>
     <div class="footer-inner">
@@ -1611,6 +1741,50 @@
     }
 
     var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxlZfK_xEBOkyoEMAnEMdG6KSMpB-Wex1vvYCUlCWaYRf3s3_kAhCPtN1Gamuind5-T/exec';
+    var lastSubscribedEmail = '';
+
+    function openModal() {
+      document.getElementById('modalContarnos').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modalContarnos').classList.remove('active');
+      document.getElementById('modalForm').reset();
+    }
+
+    document.getElementById('modalContarnos').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.getElementById('modalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('button');
+      var nombre = form.querySelector('[name="nombre"]').value.trim();
+      var apellido = form.querySelector('[name="apellido"]').value.trim();
+      var edad = form.querySelector('[name="edad"]').value.trim();
+      var wsp = form.querySelector('[name="wsp"]').value.trim();
+      if (!nombre || !apellido) return;
+      btn.disabled = true;
+      btn.textContent = 'Enviando';
+      btn.classList.add('loading');
+      var params = '?email=' + encodeURIComponent(lastSubscribedEmail)
+        + '&nombre=' + encodeURIComponent(nombre)
+        + '&apellido=' + encodeURIComponent(apellido)
+        + '&edad=' + encodeURIComponent(edad)
+        + '&wsp=' + encodeURIComponent(wsp);
+      fetch(SHEET_URL + params, { mode: 'no-cors' })
+      .then(function() {
+        btn.classList.remove('loading');
+        btn.textContent = '¡Gracias!';
+        setTimeout(function() { closeModal(); btn.disabled = false; btn.textContent = 'Enviar'; }, 2000);
+      })
+      .catch(function() {
+        btn.classList.remove('loading');
+        btn.textContent = 'Error';
+        setTimeout(function() { btn.disabled = false; btn.textContent = 'Enviar'; }, 2000);
+      });
+    });
 
     document.querySelectorAll('.hero-subscribe form, .subscribe-form').forEach(function(form) {
       form.addEventListener('submit', function(e) {
@@ -1619,6 +1793,7 @@
         var btn = form.querySelector('button');
         var email = input.value.trim();
         if (!email) return;
+        lastSubscribedEmail = email;
         btn.disabled = true;
         btn.textContent = currentLang === 'es' ? 'Enviando' : 'Sending';
         btn.classList.add('loading');
@@ -1630,9 +1805,10 @@
           btn.classList.remove('loading');
           btn.textContent = currentLang === 'es' ? '¡Listo!' : 'Done!';
           setTimeout(function() {
+            btn.textContent = currentLang === 'es' ? '¿Querés contarnos más?' : 'Tell us more?';
             btn.disabled = false;
-            btn.textContent = currentLang === 'es' ? 'Suscribite' : 'Subscribe';
-          }, 3000);
+            btn.onclick = function() { openModal(); btn.onclick = null; btn.textContent = currentLang === 'es' ? 'Suscribite' : 'Subscribe'; };
+          }, 1000);
         })
         .catch(function() {
           btn.classList.remove('loading');
