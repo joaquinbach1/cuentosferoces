@@ -268,6 +268,30 @@
       transform: scale(1.05);
     }
 
+    .hero-subscribe button.loading,
+    .subscribe-form button.loading {
+      pointer-events: none;
+      animation: btnPulse 1.2s ease-in-out infinite;
+    }
+
+    .hero-subscribe button.loading::after,
+    .subscribe-form button.loading::after {
+      content: '';
+      animation: dots 1.4s steps(4, end) infinite;
+    }
+
+    @keyframes btnPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes dots {
+      0% { content: ''; }
+      25% { content: '.'; }
+      50% { content: '..'; }
+      75% { content: '...'; }
+    }
+
     .hero-subscribe-note {
       font-size: 0.7rem;
       opacity: 0.3;
@@ -1596,12 +1620,14 @@
         var email = input.value.trim();
         if (!email) return;
         btn.disabled = true;
-        btn.textContent = '...';
+        btn.textContent = currentLang === 'es' ? 'Enviando' : 'Sending';
+        btn.classList.add('loading');
         fetch(SHEET_URL + '?email=' + encodeURIComponent(email), {
           mode: 'no-cors',
         })
         .then(function() {
           input.value = '';
+          btn.classList.remove('loading');
           btn.textContent = currentLang === 'es' ? '¡Listo!' : 'Done!';
           setTimeout(function() {
             btn.disabled = false;
@@ -1609,6 +1635,7 @@
           }, 3000);
         })
         .catch(function() {
+          btn.classList.remove('loading');
           btn.textContent = 'Error';
           setTimeout(function() {
             btn.disabled = false;
