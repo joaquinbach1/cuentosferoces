@@ -1700,7 +1700,7 @@
         </a>
       </div>
       <div class="footer-contact">
-        <a href="mailto:cuentosferoces@gmail.com">cuentosferoces@gmail.com</a>
+        <a href="mailto:hola@cuentosferoces.com">hola@cuentosferoces.com</a>
       </div>
     </div>
   </footer>
@@ -1928,6 +1928,13 @@
       var browserLang = (navigator.language || navigator.userLanguage || 'es').slice(0, 2);
       applyLang(browserLang === 'es' ? 'es' : 'en');
     })();
+
+    if (window.location.pathname.indexOf('/nueva') === -1) {
+      document.querySelector('.youtube-section').style.display = 'none';
+      document.querySelector('.section-misterios-bg').style.display = 'none';
+      document.querySelector('[href="#youtube"]').parentElement.style.display = 'none';
+      document.querySelector('[href="#misterios"]').parentElement.style.display = 'none';
+    }
   </script>
 
 </body>
