@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/nueva", "destination": "/", "permanent": true }
+  ]
+}
