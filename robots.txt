@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /wireframe.html
+Disallow: /nueva/
 
 Sitemap: https://www.cuentosferoces.com/sitemap.xml
