@@ -34,12 +34,22 @@
       overflow-x: hidden;
     }
 
-    /* VOLVER BTN */
-    .mf-back-btn {
+    /* TOP BAR */
+    .mf-top-bar {
       position: fixed;
-      top: 20px;
-      left: 24px;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+    }
+
+    .mf-back-btn {
       color: var(--white);
       text-decoration: none;
       font-size: 0.8rem;
@@ -47,13 +57,47 @@
       letter-spacing: 1px;
       opacity: 0.7;
       transition: opacity 0.2s;
-      background: rgba(0,0,0,0.5);
-      padding: 8px 16px;
-      border-radius: 4px;
+      white-space: nowrap;
     }
 
     .mf-back-btn:hover {
       opacity: 1;
+    }
+
+    .mf-vumeter {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 20px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .mf-vumeter .bar {
+      width: 3px;
+      background: var(--white);
+      border-radius: 1px;
+      height: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .mf-vumeter.playing .bar {
+      animation: vuBounce 0.8s ease-in-out infinite alternate;
+    }
+
+    .mf-vumeter.playing .bar:nth-child(1) { animation-delay: 0s; }
+    .mf-vumeter.playing .bar:nth-child(2) { animation-delay: 0.15s; }
+    .mf-vumeter.playing .bar:nth-child(3) { animation-delay: 0.05s; }
+    .mf-vumeter.playing .bar:nth-child(4) { animation-delay: 0.2s; }
+    .mf-vumeter.playing .bar:nth-child(5) { animation-delay: 0.1s; }
+
+    .mf-vumeter:not(.playing) .bar {
+      opacity: 0.4;
+    }
+
+    @keyframes vuBounce {
+      0%   { height: 4px; }
+      100% { height: 18px; }
     }
 
     /* HERO SLIDESHOW */
@@ -535,8 +579,18 @@
 </head>
 <body>
 
-  <!-- VOLVER -->
-  <a href="/" class="mf-back-btn">&larr; VOLVER</a>
+  <!-- TOP BAR -->
+  <div class="mf-top-bar">
+    <a href="/" class="mf-back-btn">&larr; VOLVER</a>
+    <div class="mf-vumeter" id="vumeter" onclick="toggleAudio()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <audio id="mfAudio" src="../assets/MF_MainTheme.mp3" loop></audio>
+  </div>
 
   <!-- HERO SLIDESHOW -->
   <section class="mf-hero">
@@ -672,5 +726,13 @@
     <div class="mf-footer-brand">&copy; Cuentos Feroces 2026</div>
   </footer>
 
+  <script>
+    function toggleAudio() {
+      var a = document.getElementById('mfAudio');
+      var v = document.getElementById('vumeter');
+      if (a.paused) { a.play(); v.classList.add('playing'); }
+      else { a.pause(); v.classList.remove('playing'); }
+    }
+  </script>
 </body>
 </html>
