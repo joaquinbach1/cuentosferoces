@@ -100,25 +100,17 @@
       100% { height: 18px; }
     }
 
-    /* HERO SLIDESHOW */
+    /* HERO FADE */
     .mf-hero {
       position: relative;
       overflow: hidden;
       height: 100vh;
-    }
-
-    .mf-slides {
-      display: flex;
-      width: 500%;
-      height: 100%;
-      animation: heroSlide 20s ease-in-out forwards;
+      background: var(--black);
     }
 
     .mf-slide {
-      width: 20%;
-      height: 100%;
-      flex-shrink: 0;
-      position: relative;
+      position: absolute;
+      inset: 0;
     }
 
     .mf-slide img {
@@ -126,6 +118,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      opacity: 0;
     }
 
     .mf-slide-overlay {
@@ -143,75 +136,104 @@
       text-align: center;
     }
 
-    .mf-slide-label .ep-num {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.6;
-      margin-bottom: 6px;
-    }
-
     .mf-slide-label h2 {
       font-size: clamp(1.5rem, 4vw, 2.5rem);
       font-weight: 800;
+      opacity: 0;
     }
 
-    .mf-hero-dots {
-      position: absolute;
-      bottom: 24px;
-      right: 40px;
-      display: flex;
-      gap: 8px;
-      z-index: 3;
-    }
+    /* Slide 1: 0-6s */
+    .mf-slide:nth-child(1) img    { animation: fadeImg 6s ease forwards 0s; }
+    .mf-slide:nth-child(1) h2     { animation: fadeTxt 6s ease forwards 0s; }
+    /* Slide 2: 6-12s */
+    .mf-slide:nth-child(2) img    { animation: fadeImg 6s ease forwards 6s; }
+    .mf-slide:nth-child(2) h2     { animation: fadeTxt 6s ease forwards 6s; }
+    /* Slide 3: 12-18s */
+    .mf-slide:nth-child(3) img    { animation: fadeImg 6s ease forwards 12s; }
+    .mf-slide:nth-child(3) h2     { animation: fadeTxt 6s ease forwards 12s; }
+    /* Slide 4: 18-24s */
+    .mf-slide:nth-child(4) img    { animation: fadeImg 6s ease forwards 18s; }
+    .mf-slide:nth-child(4) h2     { animation: fadeTxt 6s ease forwards 18s; }
 
-    .mf-hero-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transition: background 0.3s;
-    }
-
+    /* Slide 5 (logo): fade in and stay */
     .mf-slide-logo {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      inset: 0;
       background: var(--black);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 4rem;
-      position: relative;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards 24s;
     }
 
     .mf-slide-logo-bg {
       position: absolute;
       inset: 0;
-      background: url('../assets/MisterioFerocesBack_2.png') center/cover no-repeat;
+      background: url('../assets/mf_5.png') center/cover no-repeat;
       opacity: 0;
-      animation: logoBgFade 3s ease-in 16s forwards;
+      animation: logoBgFade 3s ease-in 27s forwards, logoBgZoom 30s ease-out 27s forwards;
     }
 
-    .mf-slide-logo img {
-      max-width: 70%;
-      max-height: 60%;
+    .mf-slide-logo > img {
+      max-width: 52.5%;
+      max-height: 45%;
       object-fit: contain;
       position: relative;
       z-index: 2;
     }
 
-    @keyframes logoBgFade {
-      0%   { opacity: 0; }
-      100% { opacity: 0.5; }
+    .mf-slide-logo-sponsors {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      text-align: center;
+      opacity: 0;
+      animation: sponsorsFade 2s ease-in 29s forwards;
     }
 
-    @keyframes heroSlide {
-      0%, 16%   { transform: translateX(0); }
-      20%, 36%  { transform: translateX(-20%); }
-      40%, 56%  { transform: translateX(-40%); }
-      60%, 76%  { transform: translateX(-60%); }
-      80%, 100% { transform: translateX(-80%); }
+    .mf-slide-logo-sponsors img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    @keyframes fadeImg {
+      0%        { opacity: 0; }
+      15%       { opacity: 1; }
+      75%       { opacity: 1; }
+      100%      { opacity: 0; }
+    }
+
+    @keyframes fadeTxt {
+      0%        { opacity: 0; }
+      15%       { opacity: 0; }
+      30%       { opacity: 1; }
+      65%       { opacity: 1; }
+      80%       { opacity: 0; }
+      100%      { opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      0%   { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes logoBgFade {
+      0%   { opacity: 0; }
+      100% { opacity: 0.75; }
+    }
+
+    @keyframes logoBgZoom {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.15); }
+    }
+
+    @keyframes sponsorsFade {
+      0%   { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     @keyframes dot1 {
@@ -536,9 +558,13 @@
         padding: 2rem;
       }
 
-      .mf-slide-logo img {
-        max-width: 90%;
-        max-height: 70%;
+      .mf-slide-logo > img {
+        max-width: 70%;
+        max-height: 50%;
+      }
+
+      .mf-slide-logo-sponsors img {
+        max-width: 200px;
       }
 
       .mf-slide-label {
@@ -608,32 +634,32 @@
     <audio id="mfAudio" src="../assets/MF_MainTheme.mp3" loop></audio>
   </div>
 
-  <!-- HERO SLIDESHOW -->
+  <!-- HERO FADE -->
   <section class="mf-hero">
-    <div class="mf-slides">
-      <div class="mf-slide">
-        <img src="../assets/MisteriosFeroces_Back_1.png" alt="Misterios Feroces">
-        <div class="mf-slide-overlay"></div>
-        <div class="mf-slide-label"><h2>Cinco chicos que reci&eacute;n se conocen.</h2></div>
-      </div>
-      <div class="mf-slide">
-        <img src="../assets/mf_cap3.png" alt="Cap&iacute;tulo 3 - El espejo de la realidad">
-        <div class="mf-slide-overlay"></div>
-        <div class="mf-slide-label"><h2>Un viaje de iniciaci&oacute;n a la monta&ntilde;a.</h2></div>
-      </div>
-      <div class="mf-slide">
-        <img src="../assets/mf_cap2.png" alt="Cap&iacute;tulo 2 - El primer contacto">
-        <div class="mf-slide-overlay"></div>
-        <div class="mf-slide-label"><h2>Un encuentro de otro mundo.</h2></div>
-      </div>
-      <div class="mf-slide">
-        <img src="../assets/mf_cap1.png" alt="Cap&iacute;tulo 1 - La luz misteriosa">
-        <div class="mf-slide-overlay"></div>
-        <div class="mf-slide-label"><h2 style="color: var(--yellow);">Hay se&ntilde;ales dif&iacute;ciles de ignorar.</h2></div>
-      </div>
-      <div class="mf-slide">
-        <div class="mf-slide-logo"><div class="mf-slide-logo-bg"></div><img src="../assets/Logo_MF_Transparente.png" alt="Misterios Feroces"></div>
-      </div>
+    <div class="mf-slide">
+      <img src="../assets/MisteriosFeroces_Back_1.png" alt="Misterios Feroces">
+      <div class="mf-slide-overlay"></div>
+      <div class="mf-slide-label"><h2>Cinco chicos que reci&eacute;n se conocen.</h2></div>
+    </div>
+    <div class="mf-slide">
+      <img src="../assets/mf_cap3.png" alt="Cap&iacute;tulo 3">
+      <div class="mf-slide-overlay"></div>
+      <div class="mf-slide-label"><h2>Un viaje de iniciaci&oacute;n a la monta&ntilde;a.</h2></div>
+    </div>
+    <div class="mf-slide">
+      <img src="../assets/mf_cap2.png" alt="Cap&iacute;tulo 2">
+      <div class="mf-slide-overlay"></div>
+      <div class="mf-slide-label"><h2>Un encuentro de otro mundo.</h2></div>
+    </div>
+    <div class="mf-slide">
+      <img src="../assets/mf_cap1.png" alt="Cap&iacute;tulo 1">
+      <div class="mf-slide-overlay"></div>
+      <div class="mf-slide-label"><h2 style="color: var(--yellow);">Hay se&ntilde;ales dif&iacute;ciles de ignorar.</h2></div>
+    </div>
+    <div class="mf-slide-logo">
+      <div class="mf-slide-logo-bg"></div>
+      <img src="../assets/Logo_MF_Transparente.png" alt="Misterios Feroces">
+      <div class="mf-slide-logo-sponsors"><img src="../assets/TresLogos_Juntos.png" alt="Sponsors"></div>
     </div>
   </section>
 
@@ -644,31 +670,31 @@
 
     <div class="mf-ep-grid">
 
-      <!-- CAP 1 - ACTIVO -->
-      <div class="mf-ep-card" onclick="window.open('#','_blank')">
+      <!-- CAP 1 - GRISADO -->
+      <div class="mf-ep-card disabled">
         <div class="mf-ep-thumb">
           <img src="../assets/mf_cap1.png" alt="Cap&iacute;tulo 1">
           <div class="mf-ep-overlay"></div>
-          <div class="mf-ep-play"><div class="play-tri"></div></div>
+          <div class="mf-ep-badge">Pr&oacute;ximamente</div>
         </div>
         <div class="mf-ep-info">
           <p class="mf-ep-number">Cap&iacute;tulo 1</p>
           <h3 class="mf-ep-title">La luz misteriosa</h3>
-          <span class="mf-ep-meta">Disponible</span>
+          <span class="mf-ep-meta">Pr&oacute;ximamente</span>
         </div>
       </div>
 
-      <!-- CAP 2 - ACTIVO -->
-      <div class="mf-ep-card" onclick="window.open('#','_blank')">
+      <!-- CAP 2 - GRISADO -->
+      <div class="mf-ep-card disabled">
         <div class="mf-ep-thumb">
           <img src="../assets/mf_cap2.png" alt="Cap&iacute;tulo 2">
           <div class="mf-ep-overlay"></div>
-          <div class="mf-ep-play"><div class="play-tri"></div></div>
+          <div class="mf-ep-badge">Pr&oacute;ximamente</div>
         </div>
         <div class="mf-ep-info">
           <p class="mf-ep-number">Cap&iacute;tulo 2</p>
           <h3 class="mf-ep-title">El primer contacto</h3>
-          <span class="mf-ep-meta">Disponible</span>
+          <span class="mf-ep-meta">Pr&oacute;ximamente</span>
         </div>
       </div>
 
