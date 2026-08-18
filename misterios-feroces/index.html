@@ -733,6 +733,19 @@
       if (a.paused) { a.play(); v.classList.add('playing'); }
       else { a.pause(); v.classList.remove('playing'); }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var a = document.getElementById('mfAudio');
+      var v = document.getElementById('vumeter');
+      a.play().then(function() {
+        v.classList.add('playing');
+      }).catch(function() {
+        document.addEventListener('click', function autoplay() {
+          a.play().then(function() { v.classList.add('playing'); });
+          document.removeEventListener('click', autoplay);
+        }, { once: true });
+      });
+    });
   </script>
 </body>
 </html>
