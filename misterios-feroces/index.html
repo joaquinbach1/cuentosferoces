@@ -88,13 +88,13 @@
 
     .mf-slides {
       display: flex;
-      width: 400%;
+      width: 500%;
       height: 100%;
-      animation: heroSlide 16s ease-in-out infinite;
+      animation: heroSlide 20s ease-in-out infinite;
     }
 
     .mf-slide {
-      width: 25%;
+      width: 20%;
       height: 100%;
       flex-shrink: 0;
       position: relative;
@@ -151,11 +151,32 @@
       transition: background 0.3s;
     }
 
+    .mf-slide-logo {
+      width: 100%;
+      height: 100%;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .mf-slide-logo h2 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
     @keyframes heroSlide {
-      0%, 20%   { transform: translateX(0); }
-      25%, 45%  { transform: translateX(-25%); }
-      50%, 70%  { transform: translateX(-50%); }
-      75%, 95%  { transform: translateX(-75%); }
+      0%, 16%   { transform: translateX(0); }
+      20%, 36%  { transform: translateX(-20%); }
+      40%, 56%  { transform: translateX(-40%); }
+      60%, 76%  { transform: translateX(-60%); }
+      80%, 96%  { transform: translateX(-80%); }
       100%      { transform: translateX(0); }
     }
 
@@ -571,12 +592,12 @@
         <div class="mf-slide-label"><h2>Cinco chicos que reci&eacute;n se conocen.</h2></div>
       </div>
       <div class="mf-slide">
-        <img src="../assets/mf_cap2.png" alt="Cap&iacute;tulo 2 - El primer contacto">
+        <img src="../assets/mf_cap3.png" alt="Cap&iacute;tulo 3 - El espejo de la realidad">
         <div class="mf-slide-overlay"></div>
         <div class="mf-slide-label"><h2>Un viaje de iniciaci&oacute;n a la monta&ntilde;a.</h2></div>
       </div>
       <div class="mf-slide">
-        <img src="../assets/mf_cap3.png" alt="Cap&iacute;tulo 3 - El espejo de la realidad">
+        <img src="../assets/mf_cap2.png" alt="Cap&iacute;tulo 2 - El primer contacto">
         <div class="mf-slide-overlay"></div>
         <div class="mf-slide-label"><h2>Un encuentro de otro mundo.</h2></div>
       </div>
@@ -585,8 +606,12 @@
         <div class="mf-slide-overlay"></div>
         <div class="mf-slide-label"><h2>Hay se&ntilde;ales dif&iacute;ciles de ignorar.</h2></div>
       </div>
+      <div class="mf-slide">
+        <div class="mf-slide-logo"><h2>Misterios<br>Feroces</h2></div>
+      </div>
     </div>
     <div class="mf-hero-dots">
+      <div class="mf-hero-dot"></div>
       <div class="mf-hero-dot"></div>
       <div class="mf-hero-dot"></div>
       <div class="mf-hero-dot"></div>
