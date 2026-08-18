@@ -971,13 +971,45 @@
       object-fit: cover;
     }
 
-    .section-misterios-bg .coming-soon-inner {
+    .misterios-hover-link {
       position: absolute;
       inset: 0;
       z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .misterios-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.3s;
+    }
+
+    .misterios-hover-label {
+      position: relative;
+      z-index: 3;
+      color: var(--black);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      background: var(--yellow);
+      padding: 10px 24px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .misterios-hover-link:hover .misterios-hover-overlay {
+      background: rgba(0,0,0,0.5);
+    }
+
+    .misterios-hover-link:hover .misterios-hover-label {
+      opacity: 1;
     }
 
     .section-misterios-bg h2 {
@@ -1688,9 +1720,10 @@
   <!-- ==================== MISTERIOS FEROCES — PRÓXIMAMENTE ==================== -->
   <section class="coming-soon-section section-misterios-bg" id="misterios">
     <img src="assets/misterios-feroces-cover.png" alt="Misterios Feroces - Podcast de ficci&oacute;n para preadolescentes" class="misterios-cover-bg">
-    <div class="coming-soon-inner">
-      <a href="/misterios-feroces/" class="coming-soon-badge" style="text-decoration:none; cursor:pointer; padding: 14px 36px; font-weight: 700; font-size: 1rem; letter-spacing: 1px;">CONOCER M&Aacute;S</a>
-    </div>
+    <a href="/misterios-feroces/" class="misterios-hover-link">
+      <div class="misterios-hover-overlay"></div>
+      <span class="misterios-hover-label">CONOCER M&Aacute;S</span>
+    </a>
   </section>
 
   <!-- ==================== SOBRE NOSOTROS ==================== -->

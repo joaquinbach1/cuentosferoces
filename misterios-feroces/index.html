@@ -34,49 +34,26 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
-    .mf-nav {
+    /* VOLVER BTN */
+    .mf-back-btn {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 20px;
+      left: 24px;
       z-index: 100;
-      padding: 16px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(10px);
-    }
-
-    .mf-nav-logo {
-      height: 32px;
-    }
-
-    .mf-nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .mf-nav-links a {
       color: var(--white);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 700;
       letter-spacing: 1px;
-      text-transform: uppercase;
       opacity: 0.7;
       transition: opacity 0.2s;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 16px;
+      border-radius: 4px;
     }
 
-    .mf-nav-links a:hover {
+    .mf-back-btn:hover {
       opacity: 1;
-    }
-
-    .mf-nav-back {
-      color: var(--yellow);
-      opacity: 1 !important;
     }
 
     /* HERO SLIDESHOW */
@@ -116,8 +93,10 @@
     .mf-slide-label {
       position: absolute;
       bottom: 40px;
-      left: 40px;
+      left: 0;
+      right: 0;
       z-index: 2;
+      text-align: center;
     }
 
     .mf-slide-label .ep-num {
@@ -489,27 +468,6 @@
     }
 
     @media (max-width: 600px) {
-      .mf-nav {
-        padding: 12px 16px;
-      }
-
-      .mf-nav-logo {
-        height: 24px;
-      }
-
-      .mf-nav-links {
-        gap: 12px;
-      }
-
-      .mf-nav-links a {
-        font-size: 0.65rem;
-        letter-spacing: 0.5px;
-      }
-
-      .mf-nav-links .mf-nav-back-li {
-        display: none;
-      }
-
       .mf-hero {
         height: 70vh;
       }
@@ -567,10 +525,8 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="mf-nav">
-    <a href="/"><img src="../assets/logo-iso-amarillo.png" alt="Cuentos Feroces" class="mf-nav-logo"></a>
-  </nav>
+  <!-- VOLVER -->
+  <a href="/" class="mf-back-btn">&larr; VOLVER</a>
 
   <!-- HERO SLIDESHOW -->
   <section class="mf-hero">
@@ -593,7 +549,7 @@
       <div class="mf-slide">
         <img src="../assets/mf_cap1.png" alt="Cap&iacute;tulo 1 - La luz misteriosa">
         <div class="mf-slide-overlay"></div>
-        <div class="mf-slide-label"><h2>Hay se&ntilde;ales dif&iacute;ciles de ignorar.</h2></div>
+        <div class="mf-slide-label"><h2 style="color: var(--yellow);">Hay se&ntilde;ales dif&iacute;ciles de ignorar.</h2></div>
       </div>
       <div class="mf-slide">
         <div class="mf-slide-logo"><img src="../assets/Logo_MF_Transparente.png" alt="Misterios Feroces"></div>
