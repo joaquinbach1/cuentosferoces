@@ -182,12 +182,28 @@
       align-items: center;
       justify-content: center;
       padding: 4rem;
+      position: relative;
+    }
+
+    .mf-slide-logo-bg {
+      position: absolute;
+      inset: 0;
+      background: url('../assets/MisterioFerocesBack_2.png') center/cover no-repeat;
+      opacity: 0;
+      animation: logoBgFade 3s ease-in 16s forwards;
     }
 
     .mf-slide-logo img {
       max-width: 70%;
       max-height: 60%;
       object-fit: contain;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes logoBgFade {
+      0%   { opacity: 0; }
+      100% { opacity: 0.5; }
     }
 
     @keyframes heroSlide {
@@ -616,7 +632,7 @@
         <div class="mf-slide-label"><h2 style="color: var(--yellow);">Hay se&ntilde;ales dif&iacute;ciles de ignorar.</h2></div>
       </div>
       <div class="mf-slide">
-        <div class="mf-slide-logo"><img src="../assets/Logo_MF_Transparente.png" alt="Misterios Feroces"></div>
+        <div class="mf-slide-logo"><div class="mf-slide-logo-bg"></div><img src="../assets/Logo_MF_Transparente.png" alt="Misterios Feroces"></div>
       </div>
     </div>
   </section>
