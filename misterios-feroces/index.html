@@ -90,7 +90,7 @@
       display: flex;
       width: 500%;
       height: 100%;
-      animation: heroSlide 20s ease-in-out infinite;
+      animation: heroSlide 20s ease-in-out forwards;
     }
 
     .mf-slide {
@@ -172,8 +172,7 @@
       20%, 36%  { transform: translateX(-20%); }
       40%, 56%  { transform: translateX(-40%); }
       60%, 76%  { transform: translateX(-60%); }
-      80%, 96%  { transform: translateX(-80%); }
-      100%      { transform: translateX(0); }
+      80%, 100% { transform: translateX(-80%); }
     }
 
     @keyframes dot1 {
@@ -571,12 +570,6 @@
   <!-- NAV -->
   <nav class="mf-nav">
     <a href="/"><img src="../assets/logo-iso-amarillo.png" alt="Cuentos Feroces" class="mf-nav-logo"></a>
-    <ul class="mf-nav-links">
-      <li><a href="#episodios">Episodios</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#prensa">Prensa</a></li>
-      <li class="mf-nav-back-li"><a href="/" class="mf-nav-back">Cuentos Feroces</a></li>
-    </ul>
   </nav>
 
   <!-- HERO SLIDESHOW -->
@@ -605,13 +598,6 @@
       <div class="mf-slide">
         <div class="mf-slide-logo"><img src="../assets/Logo_MF_Transparente.png" alt="Misterios Feroces"></div>
       </div>
-    </div>
-    <div class="mf-hero-dots">
-      <div class="mf-hero-dot"></div>
-      <div class="mf-hero-dot"></div>
-      <div class="mf-hero-dot"></div>
-      <div class="mf-hero-dot"></div>
-      <div class="mf-hero-dot"></div>
     </div>
   </section>
 
