@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda — Cuentos Feroces</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --yellow: #FFD200;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e5e5;
+      --gray-400: #999999;
+      --gray-600: #666666;
+      --gray-800: #222222;
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .shop-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: var(--black);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .shop-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .shop-header-left a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .shop-header-left a:hover { opacity: 1; }
+
+    .shop-title {
+      color: var(--yellow);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .cart-btn {
+      position: relative;
+      background: none;
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .cart-btn:hover {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    .cart-badge {
+      background: var(--yellow);
+      color: var(--black);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .cart-btn:hover .cart-badge {
+      background: var(--black);
+      color: var(--yellow);
+    }
+
+    /* HERO */
+    .shop-hero {
+      text-align: center;
+      padding: 80px 40px 40px;
+    }
+
+    .shop-hero-logo {
+      height: 60px;
+      margin-bottom: 24px;
+    }
+
+    .shop-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .shop-hero h1 span {
+      color: var(--yellow);
+    }
+
+    .shop-hero p {
+      color: var(--gray-400);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* CAROUSEL SECTION */
+    .carousel-section {
+      padding: 40px 0 80px;
+    }
+
+    .carousel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      margin-bottom: 32px;
+    }
+
+    .carousel-header h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .carousel-arrows {
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-arrow {
+      width: 44px;
+      height: 44px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      background: none;
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .carousel-arrow:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .carousel-track-wrapper {
+      overflow: hidden;
+      padding: 0 40px;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.5s ease;
+    }
+
+    /* PRODUCT CARD */
+    .product-card {
+      flex: 0 0 calc(25% - 18px);
+      background: var(--gray-800);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(255,210,0,0.15);
+    }
+
+    .product-card-img {
+      aspect-ratio: 1;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-card-img img {
+      width: 65%;
+      height: 65%;
+      object-fit: contain;
+      transition: transform 0.4s;
+    }
+
+    .product-card:hover .product-card-img img {
+      transform: scale(1.08);
+    }
+
+    .product-card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .product-card-info {
+      padding: 16px 20px 20px;
+    }
+
+    .product-card-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .product-card-desc {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .product-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-card-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .product-card-action {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      pointer-events: none;
+    }
+
+    /* BANNER */
+    .shop-banner {
+      margin: 0 40px 80px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a00 100%);
+      border: 2px solid rgba(255,210,0,0.2);
+      border-radius: var(--radius);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .shop-banner-text h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .shop-banner-text h3 span { color: var(--yellow); }
+
+    .shop-banner-text p {
+      color: var(--gray-400);
+      font-size: 0.95rem;
+    }
+
+    .shop-banner-cta {
+      flex-shrink: 0;
+      padding: 14px 32px;
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .shop-banner-cta:hover {
+      background: var(--white);
+    }
+
+    /* FOOTER */
+    .shop-footer {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--gray-400);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 0.8rem;
+    }
+
+    .shop-footer a {
+      color: var(--yellow);
+      text-decoration: none;
+    }
+
+    /* MOBILE */
+    @media (max-width: 1024px) {
+      .product-card { flex: 0 0 calc(33.333% - 16px); }
+    }
+
+    @media (max-width: 768px) {
+      .shop-header { padding: 12px 16px; }
+      .shop-title { font-size: 0.8rem; }
+      .shop-hero { padding: 48px 16px 24px; }
+      .shop-hero-logo { height: 44px; }
+
+      .carousel-header { padding: 0 16px; }
+      .carousel-track-wrapper { padding: 0 16px; }
+
+      .product-card { flex: 0 0 calc(70% - 12px); }
+
+      .shop-banner {
+        margin: 0 16px 60px;
+        flex-direction: column;
+        padding: 32px 24px;
+        text-align: center;
+      }
+
+      .shop-footer { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="shop-header">
+    <div class="shop-header-left">
+      <a href="/">&larr; Volver</a>
+      <span class="shop-title">Tienda</span>
+    </div>
+    <a class="cart-btn" href="producto.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      CARRITO
+      <span class="cart-badge">0</span>
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section class="shop-hero">
+    <img class="shop-hero-logo" src="../assets/logo-iso-amarillo.png" alt="Cuentos Feroces">
+    <h1>Tienda <span>Feroces</span></h1>
+    <p>Merch oficial de Cuentos Feroces. Ediciones limitadas, dise&ntilde;os exclusivos.</p>
+  </section>
+
+  <!-- CAROUSEL: DESTACADOS -->
+  <section class="carousel-section" id="destacados">
+    <div class="carousel-header">
+      <h2>Destacados</h2>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow" onclick="scrollCarousel('destacados', -1)">&larr;</button>
+        <button class="carousel-arrow" onclick="scrollCarousel('destacados', 1)">&rarr;</button>
+      </div>
+    </div>
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track" id="track-destacados">
+
+        <a class="product-card" href="producto.html?id=neuronas">
+          <div class="product-card-img">
+            <span class="product-card-badge">Nuevo</span>
+            <img src="../assets/neuronas-feroces.webp" alt="Neuronas Feroces" style="width:90%;height:90%">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">Neuronas Feroces</div>
+            <div class="product-card-desc">Juegos para pensar distinto, sentir juntos y hacer un poco de l&iacute;o</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$15.000</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html?id=taza">
+          <div class="product-card-img">
+            <img src="../assets/logo-redondo.png" alt="Taza Feroces">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">Taza Feroces</div>
+            <div class="product-card-desc">Cer&aacute;mica 350ml, apta microondas y lavavajillas</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$8.500</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html?id=poster">
+          <div class="product-card-img">
+            <span class="product-card-badge">Popular</span>
+            <img src="../assets/logo-isologo.png" alt="P&oacute;ster Hay Otra Historia">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">P&oacute;ster &ldquo;Hay Otra Historia&rdquo;</div>
+            <div class="product-card-desc">Impresi&oacute;n gicl&eacute;e en papel 300g, 50x70cm</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$12.000</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html?id=hoodie">
+          <div class="product-card-img">
+            <img src="../assets/logo-iso-amarillo.png" alt="Hoodie Feroces">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">Hoodie Feroces</div>
+            <div class="product-card-desc">Algod&oacute;n frizado, capucha, logo bordado</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$28.000</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html?id=stickers">
+          <div class="product-card-img">
+            <span class="product-card-badge">Nuevo</span>
+            <img src="../assets/logo-isologo-amarillo.png" alt="Pack Stickers">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">Pack de Stickers x10</div>
+            <div class="product-card-desc">Vinilo resistente al agua, dise&ntilde;os surtidos</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$3.500</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: MISTERIOS FEROCES -->
+  <section class="carousel-section" id="misterios">
+    <div class="carousel-header">
+      <h2>Misterios Feroces</h2>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow" onclick="scrollCarousel('misterios', -1)">&larr;</button>
+        <button class="carousel-arrow" onclick="scrollCarousel('misterios', 1)">&rarr;</button>
+      </div>
+    </div>
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track" id="track-misterios">
+
+        <a class="product-card" href="producto.html?id=remera-mf">
+          <div class="product-card-img">
+            <span class="product-card-badge">Exclusivo</span>
+            <img src="../assets/Logo_MF_Transparente.png" alt="Remera Misterios Feroces">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">Remera Misterios Feroces</div>
+            <div class="product-card-desc">Edici&oacute;n especial, estampado Misterios Feroces</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$17.000</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html?id=cuaderno-mf">
+          <div class="product-card-img">
+            <img src="../assets/mf_cap1.png" alt="Cuaderno Monte Reverso">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">Cuaderno Monte Reverso</div>
+            <div class="product-card-desc">Tapa dura, 120 hojas, ilustraciones interiores</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$9.800</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html?id=poster-mf">
+          <div class="product-card-img">
+            <img src="../assets/mf_5.png" alt="P&oacute;ster Monte Reverso">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">P&oacute;ster Monte Reverso</div>
+            <div class="product-card-desc">Impresi&oacute;n premium 50x70cm, arte original</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$14.000</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html?id=gorra-mf">
+          <div class="product-card-img">
+            <img src="../assets/Logo_MF_Transparente.png" alt="Gorra Misterios">
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-name">Gorra Misterios Feroces</div>
+            <div class="product-card-desc">Trucker, logo bordado, ajustable</div>
+            <div class="product-card-bottom">
+              <span class="product-card-price">$11.500</span>
+              <span class="product-card-action">Ver</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="shop-banner">
+    <div class="shop-banner-text">
+      <h3>Env&iacute;o gratis en compras <span>mayores a $30.000</span></h3>
+      <p>A todo el pa&iacute;s en 3&ndash;5 d&iacute;as h&aacute;biles. Cambios y devoluciones gratis.</p>
+    </div>
+    <a class="shop-banner-cta" href="#destacados">Ver productos</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="shop-footer">
+    <p>&copy; 2025 <a href="/">Cuentos Feroces</a> &mdash; Tienda oficial &middot; Procesado por Tienda Nube</p>
+  </footer>
+
+  <script>
+    var scrollPositions = {};
+
+    function scrollCarousel(id, direction) {
+      var track = document.getElementById('track-' + id);
+      var card = track.querySelector('.product-card');
+      var cardWidth = card.offsetWidth + 24;
+      if (!scrollPositions[id]) scrollPositions[id] = 0;
+      scrollPositions[id] += direction * cardWidth;
+
+      var maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
+      scrollPositions[id] = Math.max(0, Math.min(scrollPositions[id], maxScroll));
+
+      track.style.transform = 'translateX(-' + scrollPositions[id] + 'px)';
+    }
+
+    // Touch/swipe support
+    document.querySelectorAll('.carousel-track').forEach(function(track) {
+      var startX = 0;
+      var currentX = 0;
+      var isDragging = false;
+      var id = track.id.replace('track-', '');
+
+      track.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener('touchend', function() {
+        if (!isDragging) return;
+        isDragging = false;
+        var diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+          scrollCarousel(id, diff > 0 ? 1 : -1);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
