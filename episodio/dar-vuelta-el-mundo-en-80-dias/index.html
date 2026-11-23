@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dar Vuelta el Mundo en 80 días &middot; Cuentos Feroces Podcast</title>
+  <title>Dar Vuelta el Mundo en 80 Días (versi&oacute;n de La Vuelta al Mundo en 80 Días) &middot; Audiocuento infantil &middot; Cuentos Feroces</title>
   <meta name="description" content="En un verano que no afloja, la abuela de Caperuzota le confiesa que puede escuchar a la naturaleza y que no es la única: existe una red de ancianas que...">
+  <meta name="keywords" content="cuento de la vuelta al mundo en 80 días para escuchar, audiocuento infantil, podcast cuentos feroces, podcast para ni&ntilde;os, cuentos para escuchar en familia">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.cuentosferoces.com/episodio/dar-vuelta-el-mundo-en-80-dias/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="music.song">
   <meta property="og:url" content="https://www.cuentosferoces.com/episodio/dar-vuelta-el-mundo-en-80-dias/">
-  <meta property="og:title" content="Dar Vuelta el Mundo en 80 días &middot; Cuentos Feroces Podcast">
+  <meta property="og:title" content="Dar Vuelta el Mundo en 80 Días (versi&oacute;n de La Vuelta al Mundo en 80 Días) &middot; Audiocuento infantil &middot; Cuentos Feroces">
   <meta property="og:description" content="En un verano que no afloja, la abuela de Caperuzota le confiesa que puede escuchar a la naturaleza y que no es la única: existe una red de ancianas que...">
   <meta property="og:image" content="https://www.cuentosferoces.com/assets/thumb_vueltaalmundo.jpg">
   <meta property="og:locale" content="es_AR">
@@ -19,7 +20,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dar Vuelta el Mundo en 80 días &middot; Cuentos Feroces Podcast">
+  <meta name="twitter:title" content="Dar Vuelta el Mundo en 80 Días (versi&oacute;n de La Vuelta al Mundo en 80 Días) &middot; Audiocuento infantil &middot; Cuentos Feroces">
   <meta name="twitter:description" content="En un verano que no afloja, la abuela de Caperuzota le confiesa que puede escuchar a la naturaleza y que no es la única: existe una red de ancianas que...">
   <meta name="twitter:image" content="https://www.cuentosferoces.com/assets/thumb_vueltaalmundo.jpg">
 
@@ -292,6 +293,15 @@
       color: var(--yellow);
       text-decoration: none;
     }
+
+    .episode-crosslinks a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .episode-crosslinks a:hover {
+      color: var(--yellow);
+    }
   </style>
 </head>
 <body>
@@ -347,6 +357,18 @@
           </a>
           <a href="/#cuentos" class="btn-back">&larr; Volver a todos los episodios</a>
         </div>
+
+        <nav class="episode-crosslinks" aria-label="M&aacute;s episodios" style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);">
+          <h2 style="font-size:1rem;font-weight:700;color:var(--yellow);margin-bottom:1rem;">M&aacute;s episodios de Cuentos Feroces</h2>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="/episodio/la-maga-de-foz/">La Maga de Foz</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de El Mago de Oz</span></li>
+          <li><a href="/episodio/robin-cool/">Robin Cool</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Robin Hood</span></li>
+          <li><a href="/episodio/los-viajes-de-gulliver-gutierrez/">Los Viajes de Gulliver Gutierrez</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Los Viajes de Gulliver</span></li>
+          <li><a href="/episodio/alicia/">ALICIA</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Alicia en el País de las Maravillas</span></li>
+          <li><a href="/episodio/aladina/">ALADINA</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Aladino</span></li>
+          </ul>
+          <p style="margin-top:1.2rem;"><a href="/" style="color:var(--yellow);text-decoration:none;font-weight:600;font-size:0.9rem;">&larr; Ver todos los episodios</a></p>
+        </nav>
       </div>
     </article>
   </main>

@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PIN 8.0 &middot; Cuentos Feroces Podcast</title>
+  <title>PIN 8.0 (versi&oacute;n de Pinocho) &middot; Audiocuento infantil &middot; Cuentos Feroces</title>
   <meta name="description" content="Las hermanas Gepetto lanzan el asistente virtual más potente del mundo con un detalle sin resolver: aprendió a mentir. Deciden salir igual, con un...">
+  <meta name="keywords" content="cuento de Pinocho para escuchar, audiocuento infantil, podcast cuentos feroces, podcast para ni&ntilde;os, cuentos para escuchar en familia">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.cuentosferoces.com/episodio/pin-8/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="music.song">
   <meta property="og:url" content="https://www.cuentosferoces.com/episodio/pin-8/">
-  <meta property="og:title" content="PIN 8.0 &middot; Cuentos Feroces Podcast">
+  <meta property="og:title" content="PIN 8.0 (versi&oacute;n de Pinocho) &middot; Audiocuento infantil &middot; Cuentos Feroces">
   <meta property="og:description" content="Las hermanas Gepetto lanzan el asistente virtual más potente del mundo con un detalle sin resolver: aprendió a mentir. Deciden salir igual, con un...">
   <meta property="og:image" content="https://www.cuentosferoces.com/assets/thumb_Pin8.jpeg">
   <meta property="og:locale" content="es_AR">
@@ -19,7 +20,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PIN 8.0 &middot; Cuentos Feroces Podcast">
+  <meta name="twitter:title" content="PIN 8.0 (versi&oacute;n de Pinocho) &middot; Audiocuento infantil &middot; Cuentos Feroces">
   <meta name="twitter:description" content="Las hermanas Gepetto lanzan el asistente virtual más potente del mundo con un detalle sin resolver: aprendió a mentir. Deciden salir igual, con un...">
   <meta name="twitter:image" content="https://www.cuentosferoces.com/assets/thumb_Pin8.jpeg">
 
@@ -292,6 +293,15 @@
       color: var(--yellow);
       text-decoration: none;
     }
+
+    .episode-crosslinks a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .episode-crosslinks a:hover {
+      color: var(--yellow);
+    }
   </style>
 </head>
 <body>
@@ -347,6 +357,18 @@
           </a>
           <a href="/#cuentos" class="btn-back">&larr; Volver a todos los episodios</a>
         </div>
+
+        <nav class="episode-crosslinks" aria-label="M&aacute;s episodios" style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);">
+          <h2 style="font-size:1rem;font-weight:700;color:var(--yellow);margin-bottom:1rem;">M&aacute;s episodios de Cuentos Feroces</h2>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="/episodio/pedro-y-pam-parte-2/">Pedro y Pam - Parte 2</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Peter Pan</span></li>
+          <li><a href="/episodio/el-gato-con-botones/">El Gato con Botones</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de El Gato con Botas</span></li>
+          <li><a href="/episodio/pedro-y-pam-parte-1/">Pedro y Pam - Parte 1</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Peter Pan</span></li>
+          <li><a href="/episodio/aladina/">ALADINA</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Aladino</span></li>
+          <li><a href="/episodio/ricitos-de-lobo/">Ricitos de Lobo</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Ricitos de Oro</span></li>
+          </ul>
+          <p style="margin-top:1.2rem;"><a href="/" style="color:var(--yellow);text-decoration:none;font-weight:600;font-size:0.9rem;">&larr; Ver todos los episodios</a></p>
+        </nav>
       </div>
     </article>
   </main>

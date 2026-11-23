@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Flautista de Chajarí &middot; Cuentos Feroces Podcast</title>
+  <title>El Flautista de Chajarí (versi&oacute;n de El Flautista de Hamelín) &middot; Audiocuento infantil &middot; Cuentos Feroces</title>
   <meta name="description" content="Don Churú toca la flauta cada atardecer en su campo hasta que su nieta sube un video a las redes y se vuelve una celebridad mundial. El intendente lo...">
+  <meta name="keywords" content="cuento del flautista de Hamelín para escuchar, audiocuento infantil, podcast cuentos feroces, podcast para ni&ntilde;os, cuentos para escuchar en familia">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.cuentosferoces.com/episodio/el-flautista-de-chajari/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="music.song">
   <meta property="og:url" content="https://www.cuentosferoces.com/episodio/el-flautista-de-chajari/">
-  <meta property="og:title" content="El Flautista de Chajarí &middot; Cuentos Feroces Podcast">
+  <meta property="og:title" content="El Flautista de Chajarí (versi&oacute;n de El Flautista de Hamelín) &middot; Audiocuento infantil &middot; Cuentos Feroces">
   <meta property="og:description" content="Don Churú toca la flauta cada atardecer en su campo hasta que su nieta sube un video a las redes y se vuelve una celebridad mundial. El intendente lo...">
   <meta property="og:image" content="https://www.cuentosferoces.com/assets/thumb_flautista.jpg">
   <meta property="og:locale" content="es_AR">
@@ -19,7 +20,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="El Flautista de Chajarí &middot; Cuentos Feroces Podcast">
+  <meta name="twitter:title" content="El Flautista de Chajarí (versi&oacute;n de El Flautista de Hamelín) &middot; Audiocuento infantil &middot; Cuentos Feroces">
   <meta name="twitter:description" content="Don Churú toca la flauta cada atardecer en su campo hasta que su nieta sube un video a las redes y se vuelve una celebridad mundial. El intendente lo...">
   <meta name="twitter:image" content="https://www.cuentosferoces.com/assets/thumb_flautista.jpg">
 
@@ -292,6 +293,15 @@
       color: var(--yellow);
       text-decoration: none;
     }
+
+    .episode-crosslinks a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .episode-crosslinks a:hover {
+      color: var(--yellow);
+    }
   </style>
 </head>
 <body>
@@ -347,6 +357,18 @@
           </a>
           <a href="/#cuentos" class="btn-back">&larr; Volver a todos los episodios</a>
         </div>
+
+        <nav class="episode-crosslinks" aria-label="M&aacute;s episodios" style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);">
+          <h2 style="font-size:1rem;font-weight:700;color:var(--yellow);margin-bottom:1rem;">M&aacute;s episodios de Cuentos Feroces</h2>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="/episodio/ramon-zen/">Ramón Zen</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de Rapunzel</span></li>
+          <li><a href="/episodio/magia/">Magia</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Audiocuento original</span></li>
+          <li><a href="/episodio/el-vestido-del-rey-ignacio/">El Vestido del Rey Ignacio</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de El Traje Nuevo del Emperador</span></li>
+          <li><a href="/episodio/el-beto-y-la-bestia/">El Beto y la Bestia</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de La Bella y la Bestia</span></li>
+          <li><a href="/episodio/principe-arveja/">Príncipe Arveja</a> <span style="opacity:0.5;font-size:0.8rem;">&mdash; Versi&oacute;n de La Princesa y el Guisante</span></li>
+          </ul>
+          <p style="margin-top:1.2rem;"><a href="/" style="color:var(--yellow);text-decoration:none;font-weight:600;font-size:0.9rem;">&larr; Ver todos los episodios</a></p>
+        </nav>
       </div>
     </article>
   </main>
